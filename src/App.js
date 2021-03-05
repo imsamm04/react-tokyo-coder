@@ -6,6 +6,7 @@ import Products from "./pages/Products";
 import SignIn from "./Auth/pages/SignIn/SignIn";
 import React, { useEffect, useState } from "react";
 import firebase from "firebase";
+import Todos from "./pages/Todos";
 
 // Configure Firebase.
 const config = {
@@ -71,6 +72,9 @@ function App() {
         </Route>
         <Route path="/sign-in" component={SignIn}>
           <SignIn />
+        </Route>
+        <Route path="/todo">
+          <Todos />
         </Route>
       </div>
     </Router>
