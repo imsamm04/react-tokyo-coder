@@ -6,6 +6,8 @@ import Products from './pages/Products';
 import SignIn from './Auth/pages/SignIn/SignIn';
 import React, { useEffect, useState } from 'react';
 import firebase from 'firebase';
+import Navbar from './components/Navbar';
+import ThemeContextProvider from './contexts/ThemeContext';
 
 // Configure Firebase.
 const config = {
@@ -70,6 +72,9 @@ function App() {
         <Route path="/sign-in" component={SignIn}>
           <SignIn />
         </Route>
+        {/* <ThemeContextProvider>
+          <Navbar />
+        </ThemeContextProvider> */}
       </div>
     </Router>
   );
