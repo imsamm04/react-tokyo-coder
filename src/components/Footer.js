@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { ThemeContext } from '../contexts/ThemeContext';
 
-const Navbar = () => {
+const Footer = () => {
   const {
     theme: { isLightTheme, light, dark },
     toggleTheme,
@@ -9,10 +9,9 @@ const Navbar = () => {
 
   return (
     <div className="navbar" style={{ backgroundColor: isLightTheme ? light.background : dark.background }}>
-      <button onClick={toggleTheme}>Toogle Theme</button>
-      <h1>navbar</h1>
+      <h1>Footer</h1>
     </div>
   );
 };
 
-export default Navbar;
+export default Footer;

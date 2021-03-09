@@ -7,6 +7,7 @@ import SignIn from './Auth/pages/SignIn/SignIn';
 import React, { useEffect, useState } from 'react';
 import firebase from 'firebase';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import ThemeContextProvider from './contexts/ThemeContext';
 
 // Configure Firebase.
@@ -42,22 +43,22 @@ function App() {
   //   return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
   // }, []);
 
-  useEffect(() => {
-    const unregisterAuthObserver = firebase.auth().onAuthStateChanged(async (user) => {
-      if (!user) {
-        //user logout , handle something here
-        console.log('user is not login');
-        return;
-      }
-      console.log('Loged in user: ', user.displayName);
-      const token = await user.getIdToken();
-      console.log('Logged in user token: ', token);
-      console.log(user);
+  // useEffect(() => {
+  //   const unregisterAuthObserver = firebase.auth().onAuthStateChanged(async (user) => {
+  //     if (!user) {
+  //       //user logout , handle something here
+  //       console.log('user is not login');
+  //       return;
+  //     }
+  //     console.log('Loged in user: ', user.displayName);
+  //     const token = await user.getIdToken();
+  //     console.log('Logged in user token: ', token);
+  //     console.log(user);
 
-      setIsSignedIn(!!user);
-    });
-    return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
-  }, []);
+  //     setIsSignedIn(!!user);
+  //   });
+  //   return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
+  // }, []);
 
   return (
     <Router>
@@ -72,9 +73,10 @@ function App() {
         <Route path="/sign-in" component={SignIn}>
           <SignIn />
         </Route>
-        {/* <ThemeContextProvider>
+        <ThemeContextProvider>
           <Navbar />
-        </ThemeContextProvider> */}
+          <Footer />
+        </ThemeContextProvider>
       </div>
     </Router>
   );
