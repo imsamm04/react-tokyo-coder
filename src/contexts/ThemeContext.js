@@ -5,7 +5,7 @@ export const ThemeContext = createContext();
 const ThemeContextProvider = ({ children }) => {
   // state
   const [theme, setTheme] = useState({
-    isLightTheme: true,
+    isLightTheme: false,
     light: {
       background: 'rgb(240,240,240)',
       color: 'black',
@@ -16,16 +16,20 @@ const ThemeContextProvider = ({ children }) => {
     },
   });
 
-  // context data
-
-  const ThemeContextData = {
-    theme,
+  const toggleTheme = () => {
+    setTheme({
+      ...theme,
+      isLightTheme: !theme.isLightTheme,
+    });
   };
 
+  // context data
+  const ThemeContextData = {
+    theme,
+    toggleTheme,
+  };
   //return provider
-  return(
-      <ThemeContext.Provider value={ThemeContextData}>children</ThemeContext.Provider>
-  )
+  return <ThemeContext.Provider value={ThemeContextData}>{children}</ThemeContext.Provider>;
 };
 
 export default ThemeContextProvider;
